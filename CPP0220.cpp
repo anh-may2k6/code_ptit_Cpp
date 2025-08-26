@@ -12,11 +12,11 @@ void nhap(vector<vector<int>> &a,int n){
 }
 
 void bien(vector<vector<int>> &a,int n){
-    vector<vector<int>> v(n,vector<int> (n));
+    vector<vector<int>> v(n,vector<int> (n)); // tạo 1 ma trận mới dựa theo hình dạng của ma trận trước mà tất cả các phần tử trong đó là 0
     for(int i=0;i<n;i++){
-        if(i==0 || i == n-1) continue;
+        if(i==0 || i == n-1) continue; // vùng biên trên và dưới
         for(int j=0;j<n;j++){
-            if(j==0 || j == n-1) continue;
+            if(j==0 || j == n-1) continue; // vùng biên trái và phải 
             else{
                 v[i][j] = 1;
             }
