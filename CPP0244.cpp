@@ -3,20 +3,16 @@
 
 using namespace std;
 
-bool cmp(const int &a,const int &b){
-    return a<b;
-}
-
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
     int n,x;
     cin >> n;
-    map<int,int> a;
+    map<int,int> a; // map nó có sẵn less<int> nên là nó sẽ sắp xếp từ bé đến lơn 
     for(int i=0;i<n;i++){
         cin >> x;
-        a[x]++;
+        a[x]++; // nếu gặp số trùng nhau thì ++
     }
     for(auto y : a){
         cout << y.first << " ";
