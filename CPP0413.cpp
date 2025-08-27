@@ -1,7 +1,8 @@
 #include <iostream>
-#include <algorithm>
+#include <map>
 
 using namespace std;
+using ll = long long;
 
 int main(){
     ios::sync_with_stdio(false);
@@ -11,18 +12,21 @@ int main(){
     cin >> t;
     while(t--){
         cin >> n;
-        int a[n];
+        ll a[n];
+        map<int,int> b;
         for(int i=0;i<n;i++){
             cin >> a[i];
+            ll x = a[i];
+            while(x > 0){
+                b[x%10]++;
+                x/=10;
+            }
         }
-        sort(a,a+n);
-        for(int i=0;i<n/2;i++){
-            cout << a[n-i-1] << " " << a[i] << " "; 
-        }
-        if(n%2 != 0){
-            cout << a[n/2];
+        for(auto x : b){
+            cout << x.first << " ";
         }
         cout << endl;
     }
+
     return 0;
 }
