@@ -6,7 +6,7 @@ using namespace std;
 
 struct NhanVien{
     string name;
-    string sex;
+    string gender;
     string date;
     string addr;
     string code;
@@ -16,7 +16,7 @@ struct NhanVien{
 void nhap(NhanVien &ds){
     scanf("\n"); // chỉ loại bỏ dấu xuống dòng duy nhất ở cin >> t;
     getline(cin , ds.name);
-    getline(cin , ds.sex);
+    getline(cin , ds.gender);
     getline(cin , ds.date);
     getline(cin , ds.addr);
     getline(cin , ds.code);
@@ -26,7 +26,7 @@ void nhap(NhanVien &ds){
 void inds(NhanVien ds[],int N){
     for(int i=0;i<N;i++){
         cout << setw(5) << setfill('0') << i+1  << " " << // in ra id với 5 chữ số
-        ds[i].name << " " << ds[i].sex << " " <<
+        ds[i].name << " " << ds[i].gender << " " <<
         ds[i].date << " " << ds[i].addr << " " <<
         ds[i].code << " " << ds[i].nkhd << endl;
     }
