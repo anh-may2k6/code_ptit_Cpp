@@ -5,7 +5,7 @@ using namespace std;
 
 struct NhanVien{
     string name;
-    string sex;
+    string gender;
     string date;
     string addr;
     string code;
@@ -14,7 +14,7 @@ struct NhanVien{
 
 void nhap(struct NhanVien &a){
     getline(cin , a.name);
-    getline(cin , a.sex);
+    getline(cin , a.gender);
     getline(cin, a.date);
     getline(cin, a.addr);
     getline(cin , a.code);
@@ -22,7 +22,7 @@ void nhap(struct NhanVien &a){
 }
 
 void in(struct NhanVien a){
-    cout << "00001" << " " << a.name << " " << a.sex
+    cout << "00001" << " " << a.name << " " << a.gender
     << " " << a.date << " " << a.addr << " " << a.code
     << " " << a.nkhd;
 }
