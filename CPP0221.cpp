@@ -1,9 +1,12 @@
+// bài này xoay theo từng lớp cũng ok
+
 #include <iostream>
 #include <vector>
 
 using namespace std;
-
+// dùng đệ quy để xoay từng lớp
 void xoay(vector<vector<int>> &a,int n,int m,int idx){
+    // khởi tạo lớp ngoài cùng
     int c1 = idx , c2 = m-1-idx,h1 = idx,h2 = n-1-idx;
     int tmp = a[h1][c1];
     if(c1 >= c2 || h1 >= h2) return;
@@ -20,7 +23,7 @@ void xoay(vector<vector<int>> &a,int n,int m,int idx){
         a[h1][i] = a[h1][i-1];
     }
     a[h1][c1+1] = tmp;
-    xoay(a,n,m,idx+1);
+    xoay(a,n,m,idx+1); // lớp ma trận tiếp theo
 }
 
 void test_case(){
