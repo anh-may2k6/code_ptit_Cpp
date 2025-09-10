@@ -1,50 +1,38 @@
-#include <iostream>
-#include <vector>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-void nhap(vector<int> &a,int n){
-    for(int i=0;i<n;i++){
-        cin >> a[i];
-    }
-}
-
-void test_case(){
+void test_case() {
     int n;
     cin >> n;
-    vector<int> A1(n),A2(n);
+    vector<int> A1(n), A2(n);
+    for (int i = 0; i < n; i++) cin >> A1[i];
+    for (int i = 0; i < n; i++) cin >> A2[i];
 
-    nhap(A1,n);
-    nhap(A2,n);
+    unordered_map<int, int> firstPos;
+    int diff = 0, ans = 0;
 
-    int ans = 0;
-    for(int i=0;i<n-1;i++){
-        int sum_1 = A1[i] , sum_2 = A2[i] , longer = 1 , tmp = 0;
-        for(int j=i+1;j<n;j++){
-            sum_1 += A1[j];
-            sum_2 += A2[j];
-            if(sum_1 == sum_2){
-                longer++;
-                longer+=tmp;
-                tmp = 0;
-            }
-            else{
-                tmp++;
-            }
+    firstPos[0] = -1; // để xét đoạn bắt đầu từ 0
+    for (int i = 0; i < n; i++) {
+        diff += A1[i] - A2[i];
+
+        if (firstPos.find(diff) != firstPos.end()) {
+            ans = max(ans, i - firstPos[diff]);
+        } else {
+            firstPos[diff] = i;
         }
-        ans = max(ans,longer);
     }
-    cout << ans << endl;
+
+    cout << ans << "\n";
 }
 
-int main(){
+int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
     int t;
     cin >> t;
-    while(t--){
-        test_case();        
+    while (t--) {
+        test_case();
     }
     return 0;
 }
