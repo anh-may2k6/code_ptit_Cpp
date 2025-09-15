@@ -1,27 +1,21 @@
 #include <iostream>
-
-using namespace std;
-using ll = long long;
-
-ll factorial(int n){
-    if(n==0) return 1;
-    return n*factorial(n-1); // dùng đệ quy để tính giai thừa
-}
-
-ll sum(int n){
-    ll sum = 0;
-    for(int i=1;i<=n;i++){
-        sum+=factorial(i);
+    
+    using namespace std;
+    using ll = long long;
+    
+    ll sum(int n){
+        ll sum = 0;
+        ll t = 1;
+        for(int i=1;i<=n;i++){
+            t*=i;
+            sum+=t;
+        }
+        return sum;
     }
-    return sum;
-}
-
-int main(){
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-
-    int n;
-    cin >> n;
-    cout << sum(n) << endl;
-    return 0;
-}
+    
+    int main(){
+        int n;
+        cin >> n;
+        cout << sum(n) << endl;
+        return 0;
+    }
