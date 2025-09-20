@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <algorithm>
 
 using namespace std;
 
@@ -15,12 +16,12 @@ void nhap(SinhVien &a){
     cin >> a.lop >> a.x >> a.y >> a.z;
 }
 
+bool cmp(SinhVien &a,SinhVien &b){
+    return a.id < b.id;
+}
+
 void sap_xep(SinhVien a[] ,int n){
-    for(int i=0;i<n-1;i++){
-        for(int j=i+1;j<n;j++){
-            if(a[j].id < a[i].id) swap(a[i],a[j]);
-        }
-    }
+    sort(a,a+n,cmp);
 }
 
 void in_ds(SinhVien a[],int n){
@@ -32,14 +33,16 @@ void in_ds(SinhVien a[],int n){
     }
 }
 
+
+
 int main(){
     int n;
     cin >> n;
     struct SinhVien *ds = new SinhVien[n];
-    for(int i = 0 ; i < n ; i++) {
-        nhap(ds[i]);
-    }
-    sap_xep(ds , n);
-    in_ds(ds , n);
+    for(int i = 0; i < n; i++) {
+    	nhap(ds[i]);
+	}
+	sap_xep(ds, n);
+    in_ds(ds,n);
     return 0;
 }
