@@ -45,3 +45,49 @@ int main(){
     }
     return 0;
 }
+
+//đây là cách làm quay lui
+
+// #include <iostream>
+// #include <vector>
+
+// using namespace std;
+
+// int n,k;
+// vector<int> a;
+
+// void quay_lui(int i , int start){
+//     a.resize(k+1);
+//     for(int j = start ; j <= n-k+i ; j++){
+//         a[i] = j;
+//         if(i==k){
+//             for(int q=1;q<=k;q++){
+//                 cout << a[q];
+//             }
+//             cout << " ";
+//         }
+//         else{
+//             quay_lui(i+1,j+1);
+//         }
+//     }
+// }
+
+// void test_case(){
+//     cin >> n >> k;
+//     quay_lui(1,1);
+//     cout << endl;
+// }
+
+// int main(){
+//     ios::sync_with_stdio(false);
+//     cin.tie(nullptr);
+
+//     int t;
+//     cin >> t;
+//     while(t--){
+//         test_case();
+//     }
+//     return 0;
+// }
+
+//cách còn lại thì giống với sinh kế tiếp nên thôi 
