@@ -1,3 +1,4 @@
+//c1:
 #include <iostream>
 
 using namespace std;
@@ -33,3 +34,30 @@ int main(){
     }
     return 0;
 }
+
+//c2:
+// #include <iostream>
+
+// using namespace std;
+// using ll = long long;
+
+// void test_case(){
+//     ll a,b,c;
+//     cin >> a >> b >> c;
+//     ll num_1 = a%c;
+//     ll num_2 = b%c;
+//     ll ans = (__int128)num_1 * num_2 % c;
+//     cout << ans << endl;    
+// }
+
+// int main(){
+//     ios::sync_with_stdio(false);
+//     cin.tie(nullptr);
+
+//     int t;
+//     cin >> t;
+//     while(t--){
+//         test_case();
+//     }
+//     return 0;
+// }
