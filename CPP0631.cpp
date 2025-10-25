@@ -82,18 +82,18 @@ public:
         return in;
     }
     friend ostream &operator << (ostream &out , HoaDon &a){
-        KhachHang kh;
-        MatHang mh;
+        KhachHang *kh = nullptr;
+        MatHang *mh = nullptr;
         for(int i=0;i<KhachHang::n;i++){
-            if(a.id_kh == KhachHang::ds[i].getID_kh()) kh = KhachHang::ds[i];
+            if(a.id_kh == KhachHang::ds[i].getID_kh()) kh = &KhachHang::ds[i];
         }
         for(int i=0;i<MatHang::n;i++){
-            if(a.id_mh == MatHang::ds[i].getID_mh()) mh = MatHang::ds[i];
+            if(a.id_mh == MatHang::ds[i].getID_mh()) mh = &MatHang::ds[i];
         }
-        ll sum = 1LL * a.sl * mh.get_pass();
-        out << a.id_hd << " " << kh.getName_kh() << " " << kh.getAddr_kh()
-        << " " << mh.getName_mh() << " " << mh.getDVT_mh() << " " <<
-        mh.get_buy() << " " << mh.get_pass() << " " << a.sl << " " << 
+        ll sum = 1LL * a.sl * mh->get_pass();
+        out << a.id_hd << " " << kh->getName_kh() << " " << kh->getAddr_kh()
+        << " " << mh->getName_mh() << " " << mh->getDVT_mh() << " " <<
+        mh->get_buy() << " " << mh->get_pass() << " " << a.sl << " " << 
         sum << endl;
         return out;
     }
