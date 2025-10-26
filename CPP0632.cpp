@@ -2,6 +2,8 @@
 #include <iomanip>
 #include <sstream>
 #include <algorithm>
+#include <limits>
+
 using namespace std;
 using ll = long long;
 
@@ -19,8 +21,8 @@ public:
 
         if(in.peek() == '\n') in.ignore();
         getline(in , a.name);
-        getline(in , a.gender);
-        getline(in , a.date);
+        in >> a.gender >> a.date;
+        in.ignore(numeric_limits<streamsize>::max() , '\n');
         getline(in , a.addr);
 
         ds[n++] = a;
@@ -49,7 +51,7 @@ public:
         getline(in , a.name);
         getline(in , a.dvt);
         in >> a.buy >> a.pass;
-        in.ignore();
+        in.ignore(numeric_limits<streamsize>::max() , '\n');
 
         ds[n++] = a;
         return in;
@@ -129,6 +131,7 @@ int main(){
     for(i=0;i<K;i++) cin >> dshd[i];
 
     sapxep(dshd, K);
+
     for(i=0;i<K;i++) cout << dshd[i];
     return 0;
 }
