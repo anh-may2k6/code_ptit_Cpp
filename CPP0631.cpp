@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <string>
 #include <sstream>
+#include <limits>
 
 using namespace std;
 using ll = long long;
@@ -23,8 +24,8 @@ public:
         if(in.peek() == '\n') in.ignore();
         //dùng getline thống nhất để tránh rối loạn cin vs getline
         getline(in , a.name);
-        getline(in , a.gender);
-        getline(in , a.date);
+        in >> a.gender >> a.date;
+        in.ignore(numeric_limits<streamsize>::max() , '\n');
         getline(in , a.addr);
         ds[n++] = a;
         return in;
@@ -50,12 +51,8 @@ public:
         a.id = "MH" + tmp.str();
         if(in.peek() == '\n') in.ignore();
         getline(in , a.name);
-        getline(in , a.dvt);
-        string buy_tmp , pass_tmp;
-        getline(in , buy_tmp);
-        getline(in , pass_tmp);
-        a.buy = stoi(buy_tmp);
-        a.pass = stoi(pass_tmp);
+        in >> a.dvt >> a.buy >> a.pass;
+        in.ignore(numeric_limits<streamsize>::max() , '\n');
         ds[n++] = a;
         return in;
     }
@@ -77,7 +74,6 @@ public:
         ostringstream tmp;
         tmp << setw(3) << setfill('0') << ++idxHoaDon;
         a.id_hd = "HD" + tmp.str();
-        if(in.peek() == '\n') in.ignore();
         in >> a.id_kh >> a.id_mh >> a.sl;
         return in;
     }
