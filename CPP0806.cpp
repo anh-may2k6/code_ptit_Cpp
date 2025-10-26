@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <sstream>
 #include <string>
+#include <limits>
 
 using namespace std;
 using ll = long long;
@@ -26,8 +27,8 @@ public:
         a.id = "KH" + tmp.str();
         if(in.peek() == '\n') in.ignore();
         getline(in , a.name);
-        getline(in , a.gender);
-        getline(in , a.date);
+        in >> a.gender >> a.date;
+        in.ignore(numeric_limits<streamsize>::max() , '\n');
         getline(in , a.addr);
         ds[n++] = a;
         return in;
@@ -53,12 +54,8 @@ public:
         a.id = "MH" + tmp.str();
         if(in.peek() == '\n') in.ignore();
         getline(in , a.name);
-        getline(in , a.dvt);
-        string buy_str , pass_str;
-        getline(in , buy_str);
-        getline(in , pass_str);
-        a.buy = stoi(buy_str);
-        a.pass = stoi(pass_str);
+        in >> a.dvt >> a.buy >> a.pass;
+        in.ignore(numeric_limits<streamsize>::max() , '\n');
         ds[n++] = a;
         return in;
     }
