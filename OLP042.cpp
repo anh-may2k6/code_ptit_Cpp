@@ -1,0 +1,39 @@
+// bài này chỉ cần tìm được ước số của n là xong
+// với test case khổng lồ như thế thì ta ko nên duyệt
+// căn n vì nó sẽ lặp đi lặp lại rất nhiều và dẫn đến TLE 
+// ta nên tạo 1 mảng vector lưu các số và ước số của nó
+// khi cần thì ta sẽ gọi ra.
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+const int MAX_N = 1000000;
+
+vector<int> divisors_count(MAX_N + 1, 0);
+
+void precompute_divisors() {
+    for (int i = 1; i <= MAX_N; i++) {
+        for (int j = i; j <= MAX_N; j += i) {
+            divisors_count[j]++;
+        }
+    }
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    
+    precompute_divisors();
+    
+    int T;
+    cin >> T;
+    
+    while (T--) {
+        int n;
+        cin >> n;
+        cout << divisors_count[n] << "\n";
+    }
+    
+    return 0;
+}
