@@ -12,7 +12,7 @@ const int MAX_N = 1000000;
 
 vector<int> divisors_count(MAX_N + 1, 0);
 
-void precompute_divisors() {
+void precompute_divisors() { 
     for (int i = 1; i <= MAX_N; i++) {
         for (int j = i; j <= MAX_N; j += i) {
             divisors_count[j]++;
