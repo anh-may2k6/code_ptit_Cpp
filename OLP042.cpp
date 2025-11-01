@@ -12,12 +12,7 @@ const int MAX_N = 1000000;
 
 vector<int> divisors_count(MAX_N + 1, 0);
 
-<<<<<<< HEAD
 void precompute_divisors() { 
-=======
-void precompute_divisors() {
-    //với mỗi ước i thì ta sẽ tăng thêm 1 ứng với số chia được cho i
->>>>>>> 95d922351d4da02601b6f8774e0843bb7d3c7b0e
     for (int i = 1; i <= MAX_N; i++) {
         for (int j = i; j <= MAX_N; j += i) {
             divisors_count[j]++;
