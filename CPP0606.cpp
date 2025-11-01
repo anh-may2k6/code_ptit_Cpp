@@ -7,8 +7,8 @@ class NhanVien{
 private:
     string name,gender,date,addr,id,time;
 public:
-    friend istream& operator>>(istream& in,NhanVien &a);
-    friend ostream& operator<<(ostream& out,const NhanVien &a);
+    friend istream& operator >> (istream& in,NhanVien &a);
+    friend ostream& operator >> (ostream& out,const NhanVien &a);
 };
 
 istream& operator >> (istream& in,NhanVien &a){
@@ -23,7 +23,7 @@ istream& operator >> (istream& in,NhanVien &a){
     return in;
 }
 
-ostream& operator << (ostream& out,const NhanVien &a){
+ostream& operator >> (ostream& out,const NhanVien &a){
     out << setw(5) << setfill('0') << 1 << " " <<
     a.name << " " << a.gender << " " << a.date <<
     " " << a.addr << " " << a.id << " " << a.time;
@@ -33,6 +33,6 @@ ostream& operator << (ostream& out,const NhanVien &a){
 int main(){
     NhanVien a;
     cin >> a;
-    cout << a;
+    cout >> a;
     return 0;
 }
