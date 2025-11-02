@@ -86,16 +86,6 @@ int main() {
         long double rem_ld = (long double) rem;
         ull t = (ull) floor(sqrtl(rem_ld));
 
-        ull t2 = t * t;
-        //dùng 2 vòng lặp để xác định chính xác t sau khi gán t theo sqrt vì nó dễ sai số khi quá lớn
-        while (t2 > rem) {
-            --t;
-            t2 = t * t;
-        }
-        while ((t+1) * (t+1) <= rem) {
-            ++t;
-        }
-
         //với mỗi x ta sẽ có khoảng cách y lớn nhất và y nhỏ nhất 
         ll ymin = div_ceil_ll( (ll)(Y - (ll)t), SCALE );
         ll ymax = div_floor_ll( (ll)(Y + (ll)t), SCALE );
