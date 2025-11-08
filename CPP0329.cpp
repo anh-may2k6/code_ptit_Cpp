@@ -1,50 +1,81 @@
 #include <iostream>
 #include <string>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
-
-int cmp(string a,string b){
-    if(a.size() != b.size()) return a.size() < b.size() ? -1 : 1;
-    if(a == b) return 0;
-    return a < b ? -1 : 1;
+//đổi string về vector nó sẽ tối ưu hơn
+vector<int> to_vector(string &a){
+    vector<int> res;
+    for(char c : a){
+        res.push_back(c - '0');
+    }
+    return res;
 }
-
-string substract(string a , string b){
-    string res = "";
+//so sánh 2 vector
+bool cmp(vector<int> &a , vector<int> &b){
+    if(a.size() != b.size()) return a.size() > b.size();
+    for(size_t i=0;i<a.size();i++){
+        if(a[i] != b[i]){
+            return a[i] > b[i];
+        }
+    }
+    return true;
+}
+//trừ 2 vector
+vector<int> substract(vector<int> a , vector<int> &b){
     int carry = 0;
-    while(a.size() > b.size()) b = "0" + b;
-    for(int i=a.size()-1;i>=0;i--){
-        int x = (a[i]-'0') - (b[i]-'0') - carry;
-        if(x<0){
-            x += 10;
+    int n = a.size();
+    int m = b.size();
+
+    for(int i=0;i<n;i++){
+        //duyệt từ cuối lên đầu
+        int idxA = n - 1 - i;
+        int idxB = m - 1 - i;
+
+        int digitB = (idxB >= 0) ? b[idxB] : 0;
+        a[idxA] -=digitB + carry;
+
+        if(a[idxA] < 0){
+            a[idxA] += 10;
             carry = 1;
         }
         else{
             carry = 0;
         }
-        res = char(x+'0') + res;
     }
-    while(res.size() > 1 && res[0] == '0') res.erase(0,1);
-    return res;
-}
 
+    while(a.size() > 1 && a[0] == 0){
+        a.erase(a.begin());
+    }
+    return a; 
+}
+//X\Y
 string div(string a, string b){
     if(a == "0") return "0";
-    if(cmp(a,b) < 0) return "0";
+    
+    vector<int> num = to_vector(a);
+    vector<int> demon = to_vector(b);
 
-    string cur = "" , res = "";
-    for(char c:a){
-        int num = 0;
-        cur += c;
-        while(cur.size() > 1 && cur[0] == '0') cur.erase(0,1);
-        while(cmp(cur , b) >= 0){
-            cur = substract(cur , b);
-            num++;
+    string result;
+    vector<int> cur;
+
+    for(int digit : num){
+        cur.push_back(digit);
+        //xóa 0 ở đầu
+        while(cur.size() > 1 && cur[0] == 0){
+            cur.erase(cur.begin());
         }
-        res += to_string(num);
+        //đếm số lần trừ
+        int count = 0;
+        while(cmp(cur,demon)){
+            cur = substract(cur,demon);
+            count++;
+        }
+        result += to_string(count);
     }
-    while(res.size() > 1 && res[0] == '0') res.erase(0,1);
-    return res;
+    size_t pos = result.find_first_not_of('0');
+    return (pos != string::npos) ? result.substr(pos) : "0";
 }
 
 void test_case(){
